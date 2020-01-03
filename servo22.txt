@@ -1,0 +1,41 @@
+#include<Servo.h>
+Servo servo;
+Servo servo1;
+
+int x_axis= 0;
+int y_axis=1;
+
+int servo_val;
+int servo_val1;
+int joyVal;
+
+void setup()
+
+{
+servo.attach(5);
+servo1.attach(3);
+
+pinMode(A0,INPUT);
+pinMode(A1,INPUT);
+pinMode(24,OUTPUT);
+
+
+
+}
+
+void loop()
+
+{
+
+
+joyVal=analogRead(x_axis);
+joyVal=map(joyVal,0,1023,0,180);
+
+servo.write(joyVal);
+joyVal=analogRead(y_axis);
+joyVal=map(joyVal,0,1023,0,180);
+
+servo1.write(joyVal);
+delay(15);
+
+}
